@@ -1,0 +1,12 @@
+parent(tom,bob).
+parent(bob,ann).
+parent(pam,bob).
+parent(bob,pat).
+parent(pat,jim).
+parent(tom,liz).
+sister(liz,bob).
+sister(ann,pat).
+grandparent(pam,pat).
+female(pam).
+female(liz).
+female(ann).
