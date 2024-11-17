@@ -1,28 +1,32 @@
-from collections import deque
+n = int(input("pls enter the number of nodes: "))
 
-def bfs(graph, start):
-    visited = set()
-    queue = deque([start])
-    visited.add(start)
+start = input("pls enter the start node: ")
 
+nodes = input("pls enter all the nodes: ").split()
+
+tree = {}
+
+for i in range(n):
+    tree[nodes[i]] = input(f"pls enter the nodes connected to  {nodes[i]} ").split()
+
+def bfs(tree, start):
+    visited = []
+    queue = [start]
     while queue:
-        vertex = queue.popleft()
-        print(vertex, end=" ")
+        node = queue.pop(0)
+        if node not in visited:
+            visited.append(node)
+            neighbours = tree[node]
+            for neighbour in neighbours:
+                queue.append(neighbour)
+    return visited
 
-        for neighbor in graph[vertex]:
-            if neighbor not in visited:
-                visited.add(neighbor)
-                queue.append(neighbor)
+def prettyPrint(visited):
+    for i in visited:
+        print(i, end=" ")
 
-if __name__ == "__main__":
-    graph = {}
-    num_nodes = int(input("Enter the number of nodes: "))
-    
-    for _ in range(num_nodes):
-        node = input("Enter the node: ")
-        neighbors = input(f"Enter the neighbors of {node} separated by space: ").split()
-        graph[node] = neighbors
+myBFS = bfs(tree,start)
+print(myBFS)
 
-    start_node = input("Enter the starting node: ")
-    print("BFS Traversal: ", end="")
-    bfs(graph, start_node)
+
+

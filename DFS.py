@@ -16,6 +16,7 @@ for i in range(n):
 
 visited = []
 
+
 def dfs(node,tree,visited):
     if node not in visited:
         print(node,end=" ")
@@ -24,5 +25,6 @@ def dfs(node,tree,visited):
             dfs(neighbour,tree,visited)
 
 
+dfs(start,tree,visited) 
 
-dfs(start,tree,visited)
+

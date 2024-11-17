@@ -1,3 +1,11 @@
+values = []
+print("Enter 8 leaf node values:(separated by space)")
+val = input().split()
+for i in range(8):
+    value = int(val[i])
+    values.append(value)
+
+
 def alpha_beta_pruning(depth, node_index, maximizing_player, values, alpha, beta):
     if depth == 3:
         return values[node_index]
@@ -21,12 +29,6 @@ def alpha_beta_pruning(depth, node_index, maximizing_player, values, alpha, beta
                 break
         return min_eval
 
-if __name__ == "__main__":
-    values = []
-    print("Enter 8 leaf node values:")
-    for i in range(8):
-        value = int(input(f"Value {i+1}: "))
-        values.append(value)
 
-    result = alpha_beta_pruning(0, 0, True, values, float('-inf'), float('inf'))
-    print(f"The optimal value is: {result}")
+result = alpha_beta_pruning(0, 0, True, values, float('-inf'), float('inf'))
+print(f"The optimal value is: {result}")
